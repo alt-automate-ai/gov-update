@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- 
+    The viewport meta tag ensures proper scaling on all devices.
+    This design is optimized for a 15-inch screen.
+  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consultations Update</title>
+  <style>
+    /* General page styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #ebf9fc;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Header styling */
+    header {
+      position: relative;
+      /* Insert the Base64 image as the header's background */
+      background-image: url("https://yourusername.github.io/your-repo/images/myimage.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 100%;
+      /* Minimum height ensures visibility on various screens */
+      min-height: 200px;
+      /* Use flexbox to center the heading vertically and horizontally */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    header h1 {
+      position: relative;
+      z-index: 1;
+      /* Places the text on top of the background image */
+      font-size: 30px;
+      color: #fff;
+      margin: 0;
+    }
+
+    /* Optional: Add a semi-transparent overlay to improve text readability */
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 0;
+    }
+
+    /* Footer styling */
+    footer {
+      background-color: #f0f0f05e;
+      padding: 10px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    /* Table container styling */
+    .table-container {
+      width: 100%;
+      margin: 0 auto 20px;
+    }
+
+    /* Fixed header table styling */
+    .fixed-header {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    /* Scrollable data section styling */
+    .table-scrollable {
+      max-height: 250px;
+      overflow-y: auto;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    td,
+    th {
+      padding: 10px;
+      border: 1px solid #666;
+      box-sizing: border-box;
+      height: 30px;
+      /* Decreased from 40px to 30px */
+    }
+
+    /* Column widths */
+    col.date {
+      width: 15%;
+    }
+
+    col.consultation {
+      width: 85%;
+    }
+
+    /* APH theme (Table 1) */
+    .table1 .title td {
+      background-color: #0e1531;
+      color: white;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .table1 .header th {
+      background-color: #4275ae;
+      color: white;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .table1 .data-row td {
+      background-color: #f5f5f5;
+      /* color will be overridden by column-specific styling */
+      text-align: left;
+      vertical-align: top;
+      transition: background-color 0.3s ease;
+    }
+
+    /* DCCEEW theme (Table 2) */
+    .table2 .title td {
+      background-color: #083a42;
+      color: white;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .table2 .header th {
+      background-color: #4db7c7;
+      color: white;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .table2 .data-row td {
+      background-color: #f5f5f5;
+      /* color will be overridden by column-specific styling */
+      text-align: left;
+      vertical-align: top;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Link styling */
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* DAFF theme (Table 3) */
+    .table3 .title td {
+      background-color: #f58e82;
+      color: white;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .table3 .header th {
+      background-color: #f9b2aa;
+      color: white;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .table3 .data-row td {
+      background-color: #f5f5f5;
+      /* color will be overridden by column-specific styling */
+      text-align: left;
+      vertical-align: top;
+      transition: background-color 0.3s ease;
+    }
+
+    /* DSIR theme (Table 4) */
+    .table4 .title td {
+      background-color: #001c2c;
+      color: white;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .table4 .header th {
+      background-color: #285576;
+      color: white;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .table4 .data-row td {
+      background-color: #f5f5f5;
+      /* color will be overridden by column-specific styling */
+      text-align: left;
+      vertical-align: top;
+      transition: background-color 0.3s ease;
+    }
+
+    /* TREASURY theme (Table 5) */
+    .table5 .title td {
+      background-color: #00293c;
+      color: white;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .table5 .header th {
+      background-color: #5ac6f8;
+      color: white;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .table5 .data-row td {
+      background-color: #f5f5f5;
+      /* color will be overridden by column-specific styling */
+      text-align: left;
+      vertical-align: top;
+      transition: background-color 0.3s ease;
+    }
+
+    /* DITRDCA theme (Table 6) */
+    .table6 .title td {
+      background-color: #083a42;
+      color: white;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .table6 .header th {
+      background-color: #4db7c7;
+      color: white;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .table6 .data-row td {
+      background-color: #f5f5f5;
+      /* color will be overridden by column-specific styling */
+      text-align: left;
+      vertical-align: top;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Link styling */
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Hover effect for data rows */
+    .data-row:hover td {
+      background-color: #fad489;
+      /* Lighter highlight on hover */
+    }
+
+    /* Separate CSS styling for values under Date and Consultation columns */
+    /* For APH theme (Table 1) */
+    .table1 .data-row td:first-child {
+      /* Date column styling */
+      color: #d52316;
+      font-weight: bold;
+    }
+
+    .table1 .data-row td:nth-child(2) {
+      /* Consultation column styling */
+      color: #000000;
+    }
+
+    /* For DCCEEW theme (Table 2) */
+    .table2 .data-row td:first-child {
+      /* Date column styling */
+      color: #d52316;
+      font-weight: bold;
+    }
+
+    .table2 .data-row td:nth-child(2) {
+      /* Consultation column styling */
+      color: #000000;
+    }
+
+    /* For DAFF theme (Table 3) */
+    .table3 .data-row td:first-child {
+      /* Date column styling */
+      color: #d52316;
+      font-weight: bold;
+    }
+
+    .table3 .data-row td:nth-child(2) {
+      /* Consultation column styling */
+      color: #000000;
+    }
+
+    /* For DSIR theme (Table 4) */
+    .table4 .data-row td:first-child {
+      /* Date column styling */
+      color: #d52316;
+      font-weight: bold;
+    }
+
+    .table4 .data-row td:nth-child(2) {
+      /* Consultation column styling */
+      color: #000000;
+    }
+
+    /* For TREASURY theme (Table 5) */
+    .table5 .data-row td:first-child {
+      /* Date column styling */
+      color: #d52316;
+      font-weight: bold;
+    }
+
+    .table5 .data-row td:nth-child(2) {
+      /* Consultation column styling */
+      color: #000000;
+    }
+
+    /* For DITRDCA theme (Table 3) */
+    .table6 .data-row td:first-child {
+      /* Date column styling */
+      color: #d52316;
+      font-weight: bold;
+    }
+
+    .table6 .data-row td:nth-child(2) {
+      /* Consultation column styling */
+      color: #000000;
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <h1>Open Public Consultations</h1>
+  </header>
+
+  <!-- Main container -->
+  <div class="container">
+    <!-- Table 1: APH Theme -->
+    <div class="table-container table1">
+      <!-- Fixed header section -->
+      <table class="fixed-header">
+        <colgroup>
+          <col class="date">
+          <col class="consultation">
+        </colgroup>
+        <tr class="title">
+          <td colspan="2">Australian Parliament House</td>
+        </tr>
+        <tr class="header">
+          <th>Date</th>
+          <th>Consultation</th>
+        </tr>
+      </table>
+      <!-- Scrollable data section -->
+      <div class="table-scrollable">
+        <table class="data-table">
+          <colgroup>
+            <col class="date">
+            <col class="consultation">
+          </colgroup>
+          <!-- Data rows for APH theme -->
+          <tr class="data-row">
+            <td>5 Mar 2025</td>
+            <td>
+              <a href="https://www.aph.gov.au/search/url/Inquiry/27130_76_" target="_blank" rel="noopener noreferrer">
+                Nauru-Australia Treaty
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>7 Mar 2025</td>
+            <td>
+              <a href="https://www.aph.gov.au/search/url/Inquiry/27134_29_" target="_blank" rel="noopener noreferrer">
+                Health Legislation Amendment (Improved Medicare Integrity and Other Measures) Bill 2025 [Provisions]
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>7 Mar 2025</td>
+            <td>
+              <a href="https://www.aph.gov.au/search/url/Inquiry/27144_40_" target="_blank" rel="noopener noreferrer">
+                Micro-competition opportunities
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>10 Mar 2025</td>
+            <td>
+              <a href="https://www.aph.gov.au/search/url/Inquiry/27135_76_" target="_blank" rel="noopener noreferrer">
+                Partial Revision of the 2019 Radio Regulations, as incorporated into the Final Acts of the World
+                Radiocommunication Conference 2023
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>14 Mar 2025</td>
+            <td>
+              <a href="https://www.aph.gov.au/search/url/Inquiry/27137_74_" target="_blank" rel="noopener noreferrer">
+                Airservices Australia — Aviation Rescue Fire Fighting Services NexGen Project for End-of-life Facilities
+                Upgrades - Phase 1A (Queensland and Victoria)
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>14 Mar 2025</td>
+            <td>
+              <a href="https://www.aph.gov.au/search/url/Inquiry/27136_74_" target="_blank" rel="noopener noreferrer">
+                Airservices Australia — PFAS Remediation of Former Fire Training Ground at Rockhampton Airport,
+                Queensland
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>21 Mar 2025</td>
+            <td>
+              <a href="https://www.aph.gov.au/search/url/Inquiry/27131_73_" target="_blank" rel="noopener noreferrer">
+                Inquiry into the 2023-24 Major Projects Report
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>28 Mar 2025</td>
+            <td>
+              <a href="https://www.aph.gov.au/search/url/Inquiry/27139_31_" target="_blank" rel="noopener noreferrer">
+                Remuneration Tribunal Amendment (There For Public Service, Not Profit) Bill 2025
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>28 Mar 2025</td>
+            <td>
+              <a href="https://www.aph.gov.au/search/url/Inquiry/27138_41_" target="_blank" rel="noopener noreferrer">
+                The operation and appropriateness of the superannuation and pension schemes for current and former
+                members of the Australian Defence Force (ADF)
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>1 Apr 2025</td>
+            <td>
+              <a href="https://www.aph.gov.au/search/url/Inquiry/27140_27_" target="_blank" rel="noopener noreferrer">
+                Tertiary Education Legislation Amendment (There For Education, Not Profit) Bill 2025
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>16 May 2025</td>
+            <td>
+              <a href="https://www.aph.gov.au/search/url/Inquiry/27143_42_" target="_blank" rel="noopener noreferrer">
+                Compensation and income support for veterans
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>30 May 2025</td>
+            <td>
+              <a href="https://www.aph.gov.au/search/url/Inquiry/27145_32_" target="_blank" rel="noopener noreferrer">
+                Review of Schedule 9 of the Defence Act 1903
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>30 Jun 2025</td>
+            <td>
+              <a href="https://www.aph.gov.au/search/url/Inquiry/27141_33_" target="_blank" rel="noopener noreferrer">
+                Whistleblower Protection Authority Bill 2025 (No.2)
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>31 Jul 2025</td>
+            <td>
+              <a href="https://www.aph.gov.au/search/url/Inquiry/27050_24180_" target="_blank"
+                rel="noopener noreferrer">
+                Select Committee on PFAS (per and polyfluoroalkyl substances)
+              </a>
+            </td>
+          </tr>
+
+        </table>
+      </div>
+    </div>
+
+    <!-- Table 2: DCCEEW Theme -->
+    <div class="table-container table2">
+      <!-- Fixed header section -->
+      <table class="fixed-header">
+        <colgroup>
+          <col class="date">
+          <col class="consultation">
+        </colgroup>
+        <tr class="title">
+          <td colspan="2">Department of Climate Change, Energy, the Environment and Water (DCCEEW)</td>
+        </tr>
+        <tr class="header">
+          <th>Date</th>
+          <th>Consultation</th>
+        </tr>
+      </table>
+      <!-- Scrollable data section -->
+      <div class="table-scrollable">
+        <table class="data-table">
+          <colgroup>
+            <col class="date">
+            <col class="consultation">
+          </colgroup>
+          <!-- Data rows for DCCEEW theme -->
+          <tr class="data-row">
+            <td>7 Mar 2025</td>
+            <td>
+              <a href="https://consult.dcceew.gov.au/brachyscome-readeri" target="_blank" rel="noopener noreferrer">
+                Consultation document on Species Listing Eligibility and Conservation Actions – Brachyscome readeri
+                (southern daisy)
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>10 Mar 2025</td>
+            <td>
+              <a href="https://consult.dcceew.gov.au/sa-miscellaneous-dive-fishing-acitivies-sea-urchin-scallop-turbo-and-specimen-shell"
+                target="_blank" rel="noopener noreferrer">
+                South Australian Miscellaneous Dive Fishing Activities - Sea Urchin, Scallop, Turbo, and Specimen Shell
+                – Agency application 2025
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>12 Mar 2025</td>
+            <td>
+              <a href="https://consult.dcceew.gov.au/ostrea-angasi-oyster-reefs-of-southern-australia" target="_blank"
+                rel="noopener noreferrer">
+                Draft Conservation Advice for the Ostrea angasi oyster reefs of southern Australia
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>14 Mar 2025</td>
+            <td>
+              <a href="https://consult.dcceew.gov.au/call-for-wels-product-nominations" target="_blank"
+                rel="noopener noreferrer">
+                Call for Water Efficiency Labelling and Standards (WELS) product nominations
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>21 Mar 2025</td>
+            <td>
+              <a href="https://consult.dcceew.gov.au/christmas-island-and-pulu-keeling-national-park-management-plans"
+                target="_blank" rel="noopener noreferrer">
+                Christmas Island National Park and Pulu Keeling National Park Management Plans
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>21 Mar 2025</td>
+            <td>
+              <a href="https://consult.dcceew.gov.au/species-listing-eligibility-and-conservation-actions-syncomistes-rastellus"
+                target="_blank" rel="noopener noreferrer">
+                Consultation on Species Listing Eligibility and Conservation Actions – Syncomistes rastellus
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>24 Mar 2025</td>
+            <td>
+              <a href="https://consult.dcceew.gov.au/draft-referral-guidelines-for-native-vegetation-on-king-island-tasmania"
+                target="_blank" rel="noopener noreferrer">
+                Draft referral guidelines for clearing or modification of native vegetation on King Island, Tasmania
+                under the EPBC Act
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>25 Mar 2025</td>
+            <td>
+              <a href="https://consult.dcceew.gov.au/review-of-the-animal-effluent-management-accu-method"
+                target="_blank" rel="noopener noreferrer">
+                Review of the Animal Effluent Management ACCU method
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>27 Mar 2025</td>
+            <td>
+              <a href="https://consult.dcceew.gov.au/species-listing-eligibility-and-conservation-actions-acrodipsas-illidgei"
+                target="_blank" rel="noopener noreferrer">
+                Consultation on Species Listing Eligibility and Conservation Actions – Acrodipsas illidgei
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>27 Mar 2025</td>
+            <td>
+              <a href="https://consult.dcceew.gov.au/species-listing-eligibility-and-conservation-actions-dillwynia-rupestri"
+                target="_blank" rel="noopener noreferrer">
+                Species Listing Eligibility and Conservation Actions – Dillwynia rupestris
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>27 Mar 2025</td>
+            <td>
+              <a href="https://consult.dcceew.gov.au/tranche-1-exposure-draft-guarantee-of-origin-rules" target="_blank"
+                rel="noopener noreferrer">
+                Public Consultation on Tranche 1 of the Exposure Draft of the Guarantee of Origin Rules
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>28 Mar 2025</td>
+            <td>
+              <a href="https://consult.dcceew.gov.au/wa-trochus-fishery-agency-application-2025" target="_blank"
+                rel="noopener noreferrer">
+                Western Australian Trochus Fishery – Agency application 2025
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>28 Mar 2025</td>
+            <td>
+              <a href="https://consult.dcceew.gov.au/grid-enhancing-technologies-for-electricity-networks-costs-and-incentives-for-industry"
+                target="_blank" rel="noopener noreferrer">
+                Grid enhancing technologies for electricity networks: costs and incentives for industry
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>31 Mar 2025</td>
+            <td>
+              <a href="https://consult.dcceew.gov.au/cis-2025-wa-wholesale-electricity-market-design-paper"
+                target="_blank" rel="noopener noreferrer">
+                Capacity Investment Scheme 2025 - Western Australia (WA) Wholesale Electricity Market (WEM) Design Paper
+                Consultation
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>1 Apr 2025</td>
+            <td>
+              <a href="https://consult.dcceew.gov.au/draft-mawsons-huts-historic-site-heritage-mp-2025" target="_blank"
+                rel="noopener noreferrer">
+                Draft Mawson’s Huts Historic Site Heritage Management Plan 2025
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>10 Apr 2025</td>
+            <td>
+              <a href="https://consult.dcceew.gov.au/sa-department-of-primary-industries-and-regions-agency-application-2025"
+                target="_blank" rel="noopener noreferrer">
+                South Australian Rock Lobster Fishery – Agency application 2025
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>11 Apr 2025</td>
+            <td>
+              <a href="https://consult.dcceew.gov.au/periodic-review-of-the-soil-organic-carbon-method-2021"
+                target="_blank" rel="noopener noreferrer">
+                Periodic Review of the Soil Organic Carbon method 2021
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>11 Apr 2025</td>
+            <td>
+              <a href="https://consult.dcceew.gov.au/national-greenhouse-and-energy-reporting-nger-scheme"
+                target="_blank" rel="noopener noreferrer">
+                National Greenhouse and Energy Reporting (NGER) Scheme
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>14 Apr 2025</td>
+            <td>
+              <a href="https://consult.dcceew.gov.au/e3-swimming-pool-pumps-meps-and-star-rating-calculations"
+                target="_blank" rel="noopener noreferrer">
+                E3 Swimming Pool Pumps – MEPS and star rating calculations
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>Date not given</td>
+            <td>
+              <a href="https://consult.dcceew.gov.au/accu-scheme" target="_blank" rel="noopener noreferrer">
+                Australian Carbon Credit Unit (ACCU) Scheme
+              </a>
+            </td>
+          </tr>
+
+        </table>
+      </div>
+    </div>
+    <!-- Table 3: DAFF Theme -->
+    <div class="table-container table3">
+      <!-- Fixed header section -->
+      <table class="fixed-header">
+        <colgroup>
+          <col class="date">
+          <col class="consultation">
+        </colgroup>
+        <tr class="title">
+          <td colspan="2">Department of Agriculture, Fisheries and Forestry (DAFF)</td>
+        </tr>
+        <tr class="header">
+          <th>Date</th>
+          <th>Consultation</th>
+        </tr>
+      </table>
+      <!-- Scrollable data section -->
+      <div class="table-scrollable">
+        <table class="data-table">
+          <colgroup>
+            <col class="date">
+            <col class="consultation">
+          </colgroup>
+          <!-- Data rows for DAFF theme -->
+          <tr class="data-row">
+            <td>13 Mar 2025</td>
+            <td>
+              <a href="https://haveyoursay.agriculture.gov.au/innovation-challenges-pilot" target="_blank"
+                rel="noopener noreferrer">
+                Complex drought challenges facing Australian agriculture
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>14 Mar 2025</td>
+            <td>
+              <a href="https://haveyoursay.agriculture.gov.au/casings-issues-paper" target="_blank"
+                rel="noopener noreferrer">
+                Import risk review for natural casings: issues paper
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>21 Mar 2025</td>
+            <td>
+              <a href="https://haveyoursay.agriculture.gov.au/biosecurity-and-imported-food-fees-and-charges"
+                target="_blank" rel="noopener noreferrer">
+                Changes to biosecurity and imported food fees and charges
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>21 Mar 2025</td>
+            <td>
+              <a href="https://haveyoursay.agriculture.gov.au/preparation-of-livestock" target="_blank"
+                rel="noopener noreferrer">
+                Preparation of livestock for export
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>21 Mar 2025</td>
+            <td>
+              <a href="https://haveyoursay.agriculture.gov.au/livestock-export-incidents-review" target="_blank"
+                rel="noopener noreferrer">
+                Responses to significant livestock export incidents
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>30 Jun 2025</td>
+            <td>
+              <a href="https://haveyoursay.agriculture.gov.au/trade-reform-research-panel" target="_blank"
+                rel="noopener noreferrer">
+                Trade Reform for Agricultural Exporters – Research Participant Panel
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>Date not given</td>
+            <td>
+              <a href="https://haveyoursay.agriculture.gov.au/biosecuritysurveys" target="_blank"
+                rel="noopener noreferrer">
+                Junior Biosecurity Officer education resources
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>Date not given</td>
+            <td>
+              <a href="https://haveyoursay.agriculture.gov.au/three-chiefs-newsletter" target="_blank"
+                rel="noopener noreferrer">
+                Three Chiefs Newsletter
+              </a>
+            </td>
+          </tr>
+
+        </table>
+      </div>
+    </div>
+
+    <!-- Table 4: DSIR Theme -->
+    <div class="table-container table4">
+      <!-- Fixed header section -->
+      <table class="fixed-header">
+        <colgroup>
+          <col class="date">
+          <col class="consultation">
+        </colgroup>
+        <tr class="title">
+          <td colspan="2">Department of Industry Science and Resources (DSIR)</td>
+        </tr>
+        <tr class="header">
+          <th>Date</th>
+          <th>Consultation</th>
+        </tr>
+      </table>
+      <!-- Scrollable data section -->
+      <div class="table-scrollable">
+        <table class="data-table">
+          <colgroup>
+            <col class="date">
+            <col class="consultation">
+          </colgroup>
+          <!-- Data rows for DSIR theme -->
+          <tr class="data-row">
+            <td>11 Apr 2025</td>
+            <td>
+              <a href="https://consult.industry.gov.au/strategic-examination-rd-discussion-paper" target="_blank"
+                rel="noopener noreferrer">
+                Strategic Examination of Research and Development: discussion paper
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>11 Apr 2025</td>
+            <td>
+              <a href="https://consult.industry.gov.au/strategic-examination-rd-eoi" target="_blank"
+                rel="noopener noreferrer">
+                Strategic Examination of Research and Development: information sessions and roundtables
+              </a>
+            </td>
+          </tr>
+
+        </table>
+      </div>
+    </div>
+
+    <!-- Table 5: TRASURY Theme -->
+    <div class="table-container table5">
+      <!-- Fixed header section -->
+      <table class="fixed-header">
+        <colgroup>
+          <col class="date">
+          <col class="consultation">
+        </colgroup>
+        <tr class="title">
+          <td colspan="2">Treasury</td>
+        </tr>
+        <tr class="header">
+          <th>Date</th>
+          <th>Consultation</th>
+        </tr>
+      </table>
+      <!-- Scrollable data section -->
+      <div class="table-scrollable">
+        <table class="data-table">
+          <colgroup>
+            <col class="date">
+            <col class="consultation">
+          </colgroup>
+          <!-- Data rows for TRASURY theme -->
+          <tr class="data-row">
+            <td>12 Mar 2025</td>
+            <td>
+              <a href="https://treasury.gov.au/consultation/c2025-626785" target="_blank" rel="noopener noreferrer">
+                Ban on the use of adverse genetic testing results in life insurance
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>31 Mar 2025</td>
+            <td>
+              <a href="https://treasury.gov.au/consultation/c2025-624500" target="_blank" rel="noopener noreferrer">
+                Survey – Independent review of the ASBFEO
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>16 Oct 2018</td>
+            <td>
+              <a href="https://treasury.gov.au/consultation/e-invoicing" target="_blank" rel="noopener noreferrer">
+                e-Invoicing
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>08 Aug 2017</td>
+            <td>
+              <a href="https://treasury.gov.au/consultation/mbr" target="_blank" rel="noopener noreferrer">
+                Modernising Business Registers and Director Identification Numbers
+              </a>
+            </td>
+          </tr>
+
+        </table>
+      </div>
+    </div>
+
+    <!-- Table 6: DITRDCA Theme -->
+    <div class="table-container table6">
+      <!-- Fixed header section -->
+      <table class="fixed-header">
+        <colgroup>
+          <col class="date">
+          <col class="consultation">
+        </colgroup>
+        <tr class="title">
+          <td colspan="2">Department of Infrastructure, Transport, Regional Development, Communications and the Arts
+            (DITRDCA)</td>
+        </tr>
+        <tr class="header">
+          <th>Date</th>
+          <th>Consultation</th>
+        </tr>
+      </table>
+      <!-- Scrollable data section -->
+      <div class="table-scrollable">
+        <table class="data-table">
+          <colgroup>
+            <col class="date">
+            <col class="consultation">
+          </colgroup>
+          <!-- Data rows for DITRDCA theme -->
+          <tr class="data-row">
+            <td>07 Mar 2025</td>
+            <td>
+              <a href="https://www.infrastructure.gov.au/have-your-say/aviation-customer-rights-charter" target="_blank"
+                rel="noopener noreferrer">
+                Aviation Customer Rights Charter
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>30 Apr 2025</td>
+            <td>
+              <a href="https://www.infrastructure.gov.au/have-your-say/statutory-review-betstop-national-self-exclusion-register"
+                target="_blank" rel="noopener noreferrer">
+                Statutory Review of BetStop—the National Self-Exclusion Register
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>31 Dec 2025</td>
+            <td>
+              <a href="https://www.infrastructure.gov.au/have-your-say/world-summit-information-society-wsis-20-year-review"
+                target="_blank" rel="noopener noreferrer">
+                World Summit on the Information Society (WSIS) 20-year review
+              </a>
+            </td>
+          </tr>
+
+        </table>
+      </div>
+    </div>
+
+
+  </div>
+
+
+  <!-- Footer -->
+  <footer>
+    <p>Footer Content &copy; 2025</p>
+  </footer>
+</body>
+
+</html>
