@@ -14,7 +14,7 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      background-color: #e8effa;
+      background-color: #ced4e4;
     }
 
     .container {
@@ -26,33 +26,43 @@
     /* Header styling */
     header {
       position: relative;
-      /* Insert the Base64 image as the header's background */
       background-image: url("https://alt-automate-ai.github.io/gov-update/pexels-codioful-a.jpg");
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
       width: 100%;
-      /* Minimum height ensures visibility on various screens */
       min-height: 200px;
-      /* Use flexbox to center the heading vertically and horizontally */
       display: flex;
+      flex-direction: column;
+      /* Stack elements vertically */
       align-items: center;
       justify-content: center;
       padding: 20px;
       box-sizing: border-box;
+      text-align: center;
     }
 
     header h1 {
-      position: relative;
-      z-index: 1;
-      /* Places the text on top of the background image */
       font-size: 30px;
+      font-weight: bold;
       color: #fff;
       margin: 0;
+      /* Remove default margin */
     }
 
-/*     /* Optional: Add a semi-transparent overlay to improve text readability */
-/*     header::before {
+    header h2 {
+      font-size: 20px;
+      font-weight: normal;
+      color: #fff;
+      opacity: 0.8;
+      /* Slight transparency */
+      margin: 5px 0;
+      /* Adds small space between lines */
+    }
+
+
+    /*     /* Optional: Add a semi-transparent overlay to improve text readability */
+    header::before {
       content: "";
       position: absolute;
       top: 0;
@@ -61,7 +71,7 @@
       bottom: 0;
       background: rgba(198, 198, 198, 0);
       z-index: 0;
-    } */ */
+    }
 
     /* Footer styling */
     footer {
@@ -107,11 +117,11 @@
 
     /* Column widths */
     col.date {
-      width: 15%;
+      width: 14%;
     }
 
     col.consultation {
-      width: 85%;
+      width: 86%;
     }
 
     /* APH theme (Table 1) */
@@ -358,6 +368,8 @@
   <!-- Header -->
   <header>
     <h1>Open Public Consultations</h1>
+    <h2>on</h2>
+    <h2>7 Mar 2025</h2>
   </header>
 
   <!-- Main container -->
@@ -386,14 +398,6 @@
             <col class="consultation">
           </colgroup>
           <!-- Data rows for APH theme -->
-          <tr class="data-row">
-            <td>5 Mar 2025</td>
-            <td>
-              <a href="https://www.aph.gov.au/search/url/Inquiry/27130_76_" target="_blank" rel="noopener noreferrer">
-                Nauru-Australia Treaty
-              </a>
-            </td>
-          </tr>
           <tr class="data-row">
             <td>7 Mar 2025</td>
             <td>
@@ -618,15 +622,6 @@
           <tr class="data-row">
             <td>27 Mar 2025</td>
             <td>
-              <a href="https://consult.dcceew.gov.au/species-listing-eligibility-and-conservation-actions-dillwynia-rupestri"
-                target="_blank" rel="noopener noreferrer">
-                Species Listing Eligibility and Conservation Actions – Dillwynia rupestris
-              </a>
-            </td>
-          </tr>
-          <tr class="data-row">
-            <td>27 Mar 2025</td>
-            <td>
               <a href="https://consult.dcceew.gov.au/tranche-1-exposure-draft-guarantee-of-origin-rules" target="_blank"
                 rel="noopener noreferrer">
                 Public Consultation on Tranche 1 of the Exposure Draft of the Guarantee of Origin Rules
@@ -634,11 +629,11 @@
             </td>
           </tr>
           <tr class="data-row">
-            <td>28 Mar 2025</td>
+            <td>27 Mar 2025</td>
             <td>
-              <a href="https://consult.dcceew.gov.au/wa-trochus-fishery-agency-application-2025" target="_blank"
-                rel="noopener noreferrer">
-                Western Australian Trochus Fishery – Agency application 2025
+              <a href="https://consult.dcceew.gov.au/species-listing-eligibility-and-conservation-actions-dillwynia-rupestri"
+                target="_blank" rel="noopener noreferrer">
+                Species Listing Eligibility and Conservation Actions – Dillwynia rupestris
               </a>
             </td>
           </tr>
@@ -648,6 +643,15 @@
               <a href="https://consult.dcceew.gov.au/grid-enhancing-technologies-for-electricity-networks-costs-and-incentives-for-industry"
                 target="_blank" rel="noopener noreferrer">
                 Grid enhancing technologies for electricity networks: costs and incentives for industry
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>28 Mar 2025</td>
+            <td>
+              <a href="https://consult.dcceew.gov.au/wa-trochus-fishery-agency-application-2025" target="_blank"
+                rel="noopener noreferrer">
+                Western Australian Trochus Fishery – Agency application 2025
               </a>
             </td>
           </tr>
@@ -682,18 +686,18 @@
           <tr class="data-row">
             <td>11 Apr 2025</td>
             <td>
-              <a href="https://consult.dcceew.gov.au/periodic-review-of-the-soil-organic-carbon-method-2021"
+              <a href="https://consult.dcceew.gov.au/national-greenhouse-and-energy-reporting-nger-scheme"
                 target="_blank" rel="noopener noreferrer">
-                Periodic Review of the Soil Organic Carbon method 2021
+                National Greenhouse and Energy Reporting (NGER) Scheme
               </a>
             </td>
           </tr>
           <tr class="data-row">
             <td>11 Apr 2025</td>
             <td>
-              <a href="https://consult.dcceew.gov.au/national-greenhouse-and-energy-reporting-nger-scheme"
+              <a href="https://consult.dcceew.gov.au/periodic-review-of-the-soil-organic-carbon-method-2021"
                 target="_blank" rel="noopener noreferrer">
-                National Greenhouse and Energy Reporting (NGER) Scheme
+                Periodic Review of the Soil Organic Carbon method 2021
               </a>
             </td>
           </tr>
@@ -703,6 +707,16 @@
               <a href="https://consult.dcceew.gov.au/e3-swimming-pool-pumps-meps-and-star-rating-calculations"
                 target="_blank" rel="noopener noreferrer">
                 E3 Swimming Pool Pumps – MEPS and star rating calculations
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>13 Jun 2025</td>
+            <td>
+              <a href="https://consult.dcceew.gov.au/draft-threat-abatement-plan-for-introduced-grasses" target="_blank"
+                rel="noopener noreferrer">
+                Draft threat abatement plan for ecosystem degradation, habitat loss and species decline due to invasion
+                by introduced grasses
               </a>
             </td>
           </tr>
