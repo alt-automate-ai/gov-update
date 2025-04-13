@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- 
+    The viewport meta tag ensures proper scaling on all devices.
+    This design is optimized for a 15-inch screen.
+  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OECD Consultations</title>
+  <style>
+    /* General page styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #ced4e4;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Header styling */
+    header {
+      position: relative;
+      background-image: url("https://alt-automate-ai.github.io/gov-update/pexels-codioful-c.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 100%;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      /* Stack elements vertically */
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 30px;
+      font-weight: bold;
+      color: #fff;
+      margin: 0;
+      /* Remove default margin */
+    }
+
+    header h2 {
+      font-size: 20px;
+      font-weight: normal;
+      color: #fff;
+      opacity: 0.8;
+      /* Slight transparency */
+      margin: 5px 0;
+      /* Adds small space between lines */
+    }
+
+
+    /*     /* Optional: Add a semi-transparent overlay to improve text readability */
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(198, 198, 198, 0);
+      z-index: 0;
+    }
+
+    /* Footer styling */
+    /* Center the footer content and apply padding */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #a5acc0;
+      /* Optional: background color for visibility */
+    }
+
+    /* Make all paragraph text italic */
+    footer p {
+      font-style: italic;
+      margin: 10px 0;
+    }
+
+    /* Style the rights paragraph link */
+    footer p.rights a {
+      text-decoration: underline;
+      /* Remove default underline */
+      color: inherit;
+      /* Inherit the text color */
+    }
+
+    /* Table container styling */
+    .table-container {
+      width: 100%;
+      margin: 0 auto 120px;
+    }
+
+    /* Fixed header table styling */
+    .fixed-header {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    /* Scrollable data section styling */
+    .table-scrollable {
+      max-height: 500px;
+      overflow-y: auto;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    td,
+    th {
+      padding: 5px 1px 1px 10px;
+      border: 1px solid #666;
+      box-sizing: border-box;
+      height: 30px;
+      /* Decreased from 40px to 30px */
+    }
+
+    .fixed-header .header th {
+      padding: 1px 10px;
+      /* Reduced padding for header cells */
+      height: 25px;
+      /* Reduced height for the header row */
+    }
+
+    /* Column widths */
+    col.date {
+      width: 30%;
+    }
+
+    col.consultation {
+      width: 70%;
+    }
+
+    /* ASX theme (Table 9) */
+    .table9 .title td {
+      background-color: #101d40;
+      color: white;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .table9 .header th {
+      background-color: #0660ef;
+      color: white;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .table9 .data-row td {
+      background-color: #f5f5f5;
+      /* color will be overridden by column-specific styling */
+      text-align: left;
+      vertical-align: top;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Link styling */
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Hover effect for data rows */
+    .data-row:hover td {
+      background-color: #fad489;
+      /* Lighter highlight on hover */
+    }
+
+    /* Separate CSS styling for values under Date and Consultation columns */
+
+    /* For ASX theme (Table 9) */
+    .table9 .data-row td:first-child {
+      /* Date column styling */
+      color: #d52316;
+      font-weight: bold;
+    }
+
+    .table9 .data-row td:nth-child(2) {
+      /* Consultation column styling */
+      color: #000000;
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <h1>OECD Consultations</h1>
+    <h2>on</h2>
+    <h2>14 Apr 2025</h2>
+  </header>
+
+  <!-- Main container -->
+  <div class="container">
+    <!-- Table 9: ASX Theme -->
+    <div class="table-container table9">
+      <!-- Fixed header section -->
+      <table class="fixed-header">
+        <colgroup>
+          <col class="date">
+          <col class="consultation">
+        </colgroup>
+        <tr class="title">
+          <td colspan="2">Organisation for Economic Co-operation and Development (OECD)</td>
+        </tr>
+        <tr class="header">
+          <th>Date</th>
+          <th>Consultation</th>
+        </tr>
+      </table>
+      <!-- Scrollable data section -->
+      <div class="table-scrollable">
+        <table class="data-table">
+          <colgroup>
+            <col class="date">
+            <col class="consultation">
+          </colgroup>
+          <!-- Data rows for ASX theme -->
+          <tr class="data-row">
+            <td>27 March - 23 April 2025</td>
+            <td>
+              <a href="https://www.oecd.org/en/events/public-consultations/2025/03/evaluating-estonias-implementation-of-the-oecd-anti-bribery-convention.html"
+                target="_blank" rel="noopener noreferrer">
+                Evaluating Estonia's implementation of the OECD Anti-Bribery Convention
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>26 March - 19 April 2025</td>
+            <td>
+              <a href="https://www.oecd.org/en/events/public-consultations/2025/03/monitoring-the-oecd-anti-bribery-convention-in-colombia.html"
+                target="_blank" rel="noopener noreferrer">
+                Evaluating Colombia's implementation of the OECD Anti-Bribery Convention
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>24 March - 2 May 2025</td>
+            <td>
+              <a href="https://www.oecd.org/en/events/public-consultations/2025/03/input-on-experience-with-application-of-ukraines-transfer-pricing-legislation.html"
+                target="_blank" rel="noopener noreferrer">
+                Input on Experience with Application of Ukraine's Transfer Pricing Legislation
+              </a>
+            </td>
+          </tr>
+
+        </table>
+      </div>
+    </div>
+
+
+  </div>
+
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      BCSD Australia recognises the First Peoples of this Nation and their ongoing cultural and spiritual connections to
+      the lands, waters, seas, skies, and communities. We acknowledge First Nations Peoples as the Traditional
+      Custodians and Lore Keepers of the oldest living culture and pay respects to their Elders past and present. We
+      extend that respect to all First Nations Peoples.
+    </p>
+    <p>
+      Sustainable Business Australia Limited t/a Business Council for Sustainable Development Australia is a registered
+      charity with the Australian Charities and Not-for-Profits Commission.
+    </p>
+    <p class="rights">
+      <a href="https://www.bcsda.org.au/" target="_blank" rel="noopener noreferrer">
+        All rights reserved BCSD Australia 2025
+      </a>
+    </p>
+  </footer>
+</body>
+
+</html>
