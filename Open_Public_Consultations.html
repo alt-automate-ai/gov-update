@@ -130,6 +130,13 @@
       /* Decreased from 40px to 30px */
     }
 
+    .fixed-header .header th {
+      padding: 5px;
+      /* Reduced padding for header cells */
+      height: 25px;
+      /* Reduced height for the header row */
+    }
+
     /* Column widths */
     col.date {
       width: 14%;
@@ -287,6 +294,75 @@
       transition: background-color 0.3s ease;
     }
 
+    /* ASIC theme (Table 7) */
+    .table7 .title td {
+      background-color: #253746;
+      color: white;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .table7 .header th {
+      background-color: #7c8790;
+      color: white;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .table7 .data-row td {
+      background-color: #f5f5f5;
+      /* color will be overridden by column-specific styling */
+      text-align: left;
+      vertical-align: top;
+      transition: background-color 0.3s ease;
+    }
+
+    /* APRA theme (Table 8) */
+    .table8 .title td {
+      background-color: #002b8b;
+      color: white;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .table8 .header th {
+      background-color: #1481da;
+      color: white;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .table8 .data-row td {
+      background-color: #f5f5f5;
+      /* color will be overridden by column-specific styling */
+      text-align: left;
+      vertical-align: top;
+      transition: background-color 0.3s ease;
+    }
+
+    /* ASX theme (Table 9) */
+    .table9 .title td {
+      background-color: #3c6486;
+      color: white;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .table9 .header th {
+      background-color: #94a1c4;
+      color: white;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .table9 .data-row td {
+      background-color: #f5f5f5;
+      /* color will be overridden by column-specific styling */
+      text-align: left;
+      vertical-align: top;
+      transition: background-color 0.3s ease;
+    }
+
     /* Link styling */
     a {
       text-decoration: none;
@@ -364,7 +440,7 @@
       color: #000000;
     }
 
-    /* For DITRDCA theme (Table 3) */
+    /* For DITRDCA theme (Table 6) */
     .table6 .data-row td:first-child {
       /* Date column styling */
       color: #d52316;
@@ -372,6 +448,42 @@
     }
 
     .table6 .data-row td:nth-child(2) {
+      /* Consultation column styling */
+      color: #000000;
+    }
+
+    /* For ASIC theme (Table 7) */
+    .table7 .data-row td:first-child {
+      /* Date column styling */
+      color: #d52316;
+      font-weight: bold;
+    }
+
+    .table7 .data-row td:nth-child(2) {
+      /* Consultation column styling */
+      color: #000000;
+    }
+
+    /* For APRA theme (Table 8) */
+    .table8 .data-row td:first-child {
+      /* Date column styling */
+      color: #d52316;
+      font-weight: bold;
+    }
+
+    .table8 .data-row td:nth-child(2) {
+      /* Consultation column styling */
+      color: #000000;
+    }
+
+    /* For ASX theme (Table 9) */
+    .table9 .data-row td:first-child {
+      /* Date column styling */
+      color: #d52316;
+      font-weight: bold;
+    }
+
+    .table9 .data-row td:nth-child(2) {
       /* Consultation column styling */
       color: #000000;
     }
@@ -384,7 +496,7 @@
   <header>
     <h1>Open Public Consultations</h1>
     <h2>on</h2>
-    <h2>12 Apr 2025</h2>
+    <h2>13 Apr 2025</h2>
   </header>
 
   <!-- Main container -->
@@ -944,6 +1056,129 @@
               <a href="https://www.infrastructure.gov.au/have-your-say/world-summit-information-society-wsis-20-year-review"
                 target="_blank" rel="noopener noreferrer">
                 World Summit on the Information Society (WSIS) 20-year review
+              </a>
+            </td>
+          </tr>
+
+        </table>
+      </div>
+    </div>
+
+    <!-- Table 7: ASIC Theme -->
+    <div class="table-container table7">
+      <!-- Fixed header section -->
+      <table class="fixed-header">
+        <colgroup>
+          <col class="date">
+          <col class="consultation">
+        </colgroup>
+        <tr class="title">
+          <td colspan="2">Australian Securities & Investments Commission (ASIC)</td>
+        </tr>
+        <tr class="header">
+          <th>Date</th>
+          <th>Consultation</th>
+        </tr>
+      </table>
+      <!-- Scrollable data section -->
+      <div class="table-scrollable">
+        <table class="data-table">
+          <colgroup>
+            <col class="date">
+            <col class="consultation">
+          </colgroup>
+          <!-- Data rows for ASIC theme -->
+          <tr class="data-row">
+            <td>14 May 2025</td>
+            <td>
+              <a href="https://asic.gov.au/regulatory-resources/find-a-document/consultations/cp-383-reportable-situations-and-internal-dispute-resolution-data-publication/"
+                target="_blank" rel="noopener noreferrer">
+                CP 383 Reportable situations and internal dispute resolution data publication
+              </a>
+            </td>
+          </tr>
+
+        </table>
+      </div>
+    </div>
+
+    <!-- Table 8: APRA Theme -->
+    <div class="table-container table8">
+      <!-- Fixed header section -->
+      <table class="fixed-header">
+        <colgroup>
+          <col class="date">
+          <col class="consultation">
+        </colgroup>
+        <tr class="title">
+          <td colspan="2">Australian Prudential Regulation Authority (APRA)</td>
+        </tr>
+        <tr class="header">
+          <th>Date</th>
+          <th>Consultation</th>
+        </tr>
+      </table>
+      <!-- Scrollable data section -->
+      <div class="table-scrollable">
+        <table class="data-table">
+          <colgroup>
+            <col class="date">
+            <col class="consultation">
+          </colgroup>
+          <!-- Data rows for APRA theme -->
+          <tr class="data-row">
+            <td>6 June 2025</td>
+            <td>
+              <a href="https://www.apra.gov.au/proposed-changes-to-governance" target="_blank"
+                rel="noopener noreferrer">
+                Proposed changes to governance
+              </a>
+            </td>
+          </tr>
+          <tr class="data-row">
+            <td>20 March 2025</td>
+            <td>
+              <a href="https://www.apra.gov.au/clarifying-treatment-of-higher-education-loan-program-debt-obligations"
+                target="_blank" rel="noopener noreferrer">
+                Clarifying the treatment of Higher Education Loan Program debt obligations
+              </a>
+            </td>
+          </tr>
+
+        </table>
+      </div>
+    </div>
+
+    <!-- Table 9: ASX Theme -->
+    <div class="table-container table9">
+      <!-- Fixed header section -->
+      <table class="fixed-header">
+        <colgroup>
+          <col class="date">
+          <col class="consultation">
+        </colgroup>
+        <tr class="title">
+          <td colspan="2">Australian Stock Exchange (ASX)</td>
+        </tr>
+        <tr class="header">
+          <th>Date</th>
+          <th>Consultation</th>
+        </tr>
+      </table>
+      <!-- Scrollable data section -->
+      <div class="table-scrollable">
+        <table class="data-table">
+          <colgroup>
+            <col class="date">
+            <col class="consultation">
+          </colgroup>
+          <!-- Data rows for ASX theme -->
+          <tr class="data-row">
+            <td>Date not given</td>
+            <td>
+              <a href="https://www.asx.com.au/about/regulation/consultations-and-submissions" target="_blank"
+                rel="noopener noreferrer">
+                No open consultation
               </a>
             </td>
           </tr>
